@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "@fewlines-education/request": "^0.0.1",
+    "cookie": "^0.4.2",
     "express": "^4.17.2",
     "nunjucks": "^3.2.3"
   }

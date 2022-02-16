@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import request from "@fewlines-education/request";
 import express from "express";
 import nunjucks from "nunjucks";

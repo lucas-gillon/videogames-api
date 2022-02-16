@@ -19,19 +19,19 @@
       {% endfor %}
     </div>
     </li>
-    <li>
-      Screenshots:
-        {% for index in screenshots %}
-        <div class="wrapper">
-          <fieldset>
-            <div>
-              <img class="img" src="{{ index.url }}">
-            </div>
-          </fieldset>
-        <div>
-        {% endfor %}
-    </li>
   </ul>
+  <li>Screenshots:</li>
+  <div class="cards">
+    {% for index in screenshots %}
+      <div class="card">
+        <fieldset>
+          <div>
+            <img class="img" src="{{ index.url }}">
+          </div>
+        </fieldset>
+      </div>
+    {% endfor %}
+  </div>
 </div>
 
 {% endblock %}

@@ -3,19 +3,21 @@
 {% block content %}
 
 <p>Games from the platform : </p>
-<div class="wrapper">
+<div class="cards">
   {% for index in games %}
-    <fieldset>
-      <div>
-        <a href="/games/{{index.slug}}">
-          {{ index.name }}
-        </a>
-        <a href="/games/{{index.slug}}">
-          <img src="{{index.cover.url}}">
-        </a>
-        <br>
-      </div>
-    </fieldset>
+    <div class="card">
+        <fieldset>
+          <div>
+            <a href="/games/{{index.slug}}">
+              {{ index.name }}
+           </a>
+           <a href="/games/{{index.slug}}">
+             <img src="{{index.cover.url}}">
+          </a>
+         <br>
+        </div>
+      </fieldset>
+    </div>
   {% endfor %}
 </div>
 
