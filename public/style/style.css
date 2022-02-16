@@ -24,11 +24,7 @@ p, a {
 a:hover {
   color: white
 }
-.wrapper {
-  display: grid;
-  columns: 200px 3;
-  grid-gap: .5rem;
-}
+
 .img{
   width: 200px;
   transition: transform .1s;
