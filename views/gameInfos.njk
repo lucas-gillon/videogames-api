@@ -10,21 +10,25 @@
     <li>Game: <u>{{ game.name }}</u></li>
     <li>Rating: {{ game.total_rating_count }}</li>
     <li>
+    <div>
       Game genres :
       {% for index in gameGenres %}
         <ul>
           <li>{{ index.genre.name }}</li>
         </ul>
       {% endfor %}
-      </li>
+    </div>
+    </li>
     <li>
       Screenshots:
         {% for index in screenshots %}
+        <div class="wrapper">
           <fieldset>
-            <ul>
-              <img src="{{ index.url }}" width="500px">
-            </ul>
+            <div>
+              <img class="img" src="{{ index.url }}">
+            </div>
           </fieldset>
+        <div>
         {% endfor %}
     </li>
   </ul>
