@@ -7,7 +7,7 @@
     <img src="{{ game.cover_url }}">
   </fieldset>
   <ul>
-    <li>Game: {{ game.name }}</li>
+    <li>Game: <u>{{ game.name }}</u></li>
     <li>Rating: {{ game.total_rating_count }}</li>
     <li>
       Game genres :
@@ -16,6 +16,17 @@
           <li>{{ index.genre.name }}</li>
         </ul>
       {% endfor %}
+      </li>
+    <li>
+      Screenshots:
+        {% for index in screenshots %}
+          <fieldset>
+            <ul>
+              <img src="{{ index.url }}" width="500px">
+            </ul>
+          </fieldset>
+        {% endfor %}
+    </li>
   </ul>
 </div>
 
