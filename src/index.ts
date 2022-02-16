@@ -25,15 +25,29 @@ app.get("/", (req, response) => {
 
 app.get("/platform/:id", (req, response) => {
   const routeParameters = req.params.id;
-  console.log(routeParameters);
+  // console.log(routeParameters);
   request(`http://videogame-api.fly.dev/games/platforms/${routeParameters}`, (error, body) => {
     if (error) {
       throw error;
     }
     const platform = JSON.parse(body);
-    console.log(platform);
+    // console.log(platform);
 
-    response.render("platformName", { games: platform.games });
+    response.render("gamesNames", { games: platform.games });
+  });
+});
+
+app.get("/games/:slug", (req, response) => {
+  const routeSlug = req.params.slug;
+  // console.log(routeParameters);
+  request(`http://videogame-api.fly.dev/games/slug/${routeSlug}`, (error, body) => {
+    if (error) {
+      throw error;
+    }
+    const game = JSON.parse(body);
+    console.log(game.games_genres);
+
+    response.render("gameInfos", { game, gameGenres: game.games_genres });
   });
 });
 

@@ -1,0 +1,22 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<p>Games from the platform : </p>
+<div class="wrapper">
+  {% for index in games %}
+    <fieldset>
+      <div>
+        <a href="/games/{{index.slug}}">
+          {{ index.name }}
+        </a>
+        <a href="/games/{{index.slug}}">
+          <img src="{{index.cover.url}}">
+        </a>
+        <br>
+      </div>
+    </fieldset>
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<div class="wrapper">
+  <fieldset>
+    <img src="{{ game.cover_url }}">
+  </fieldset>
+  <ul>
+    <li>Game: {{ game.name }}</li>
+    <li>Rating: {{ game.total_rating_count }}</li>
+    <li>
+      Game genres :
+      {% for index in gameGenres %}
+        <ul>
+          <li>{{ index.genre.name }}</li>
+        </ul>
+      {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}
