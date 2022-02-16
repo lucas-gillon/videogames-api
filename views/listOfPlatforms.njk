@@ -1,0 +1,19 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+List Of Games :
+<div class="wrapper">
+  {% for platform in platforms %}
+    <fieldset>
+      <div>
+        <a href="/platform/{{ platform.id }}">
+          <img src="{{platform.logo.url}}">
+        </a> <br>
+        <a href="/platform/{{ platform.id }}">{{ platform.name }}</a>
+      </div>
+    </fieldset>
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+Games from the platform :
+{% for index in games %}
+<li>
+{{ index.name }}
+</li>
+{% endfor %}
+
+{% endblock %}
