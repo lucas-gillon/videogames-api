@@ -63,3 +63,14 @@ body { padding: 1rem; }
   .cards { grid-template-columns: repeat(3, 1fr); }
 }
 
+#menu {
+	background: rgba(252, 211, 146, 0.89);
+	color: #FFF;
+	height: 48px;
+	padding-left: 18px;
+	border-radius: 12px;
+  position : fixed;
+}
+#menu:hover {
+  color: #444444
+}

@@ -23,26 +23,23 @@ app.get("/platformPages", (req, response) => {
     if (error) {
       throw error;
     }
-    // if (pageNumber < 1) {
-    //   response.redirect("/platformPages?page=1");
-    // } else {
     const platformsList = JSON.parse(body);
 
     response.render("listOfPlatforms", { pageNumber, platforms: platformsList.platforms });
-    // }
+
   });
 });
 
 app.get("/platform/:id", (req, response) => {
   const platformID = req.params.id;
-  request(`http://videogame-api.fly.dev/games/platforms/${platformID}`, (error, body) => {
+  const pageNumber = parseInt(String(req.query.page));
+  request(`http://videogame-api.fly.dev/games/platforms/${platformID}?page=${pageNumber}`, (error, body) => {
     if (error) {
       throw error;
     }
     const platform = JSON.parse(body);
-    // console.log(platform.games);
 
-    response.render("gamesNames", { games: platform.games });
+    response.render("gamesNames", { pageNumber, platformID, games: platform.games });
   });
 });
 
@@ -54,7 +51,7 @@ app.get("/games/:slug", (req, response) => {
     }
     const game = JSON.parse(body);
 
-    response.render("gameInfos", { game, gameGenres: game.games_genres, screenshots: game.game_screenshots });
+    response.render("gameInfos", { game, gamePlatforms: game.games_platforms, gameGenres: game.games_genres, screenshots: game.game_screenshots });
   });
 });
 

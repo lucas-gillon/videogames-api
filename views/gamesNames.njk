@@ -2,17 +2,18 @@
 
 {% block content %}
 
-<p>Games from the platform : </p>
+<center><h1>Games from the platform : </h1></center>
+<center><h2>Page {{pageNumber}}</h2></center>
 <div class="cards">
   {% for index in games %}
     <div class="card">
-        <fieldset>
-          <div>
-            <a href="/games/{{index.slug}}">
-              {{ index.name }}
-           </a>
-           <a href="/games/{{index.slug}}">
-             <img src="{{index.cover.url}}">
+      <fieldset>
+        <div>
+          <a href="/games/{{index.slug}}">
+            {{ index.name }}
+          </a>
+          <a href="/games/{{index.slug}}">
+            <img src="{{index.cover.url}}">
           </a>
          <br>
         </div>
@@ -20,5 +21,41 @@
     </div>
   {% endfor %}
 </div>
+
+{% if pageNumber <= 1 %}
+    <div class="cards">
+      <div class="card">
+        <a href="/platform/{{platformID}}?page={{pageNumber-1}}">
+          <button class="button" name="page précédente" disabled>
+            page précédente
+          </button>
+        </a>
+      </div>
+      <div class="card">
+        <a href="/platform/{{platformID}}?page={{pageNumber+1}}">
+          <button class="button" name="page suivante">
+            page suivante
+        </button>
+        </a>
+      </div>
+    </div>
+    {% else %}
+    <div class="cards">
+      <div class="card">
+        <a href="/platform/{{platformID}}?page={{pageNumber-1}}">
+          <button class="button" name="page précédente">
+            page précédente
+          </button>
+        </a>
+      </div>
+      <div class="card">
+        <a href="/platform/{{platformID}}?page={{pageNumber+1}}">
+          <button class="button" name="page suivante">
+            page suivante
+          </button>
+        </a>
+      </div>
+    </div>
+    {% endif %}
 
 {% endblock %}

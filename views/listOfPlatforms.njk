@@ -2,15 +2,16 @@
 
 {% block content %}
 
-List Of Platforms :
+<center><h1>List Of Platforms :</h1></center>
+<center><h2>Page {{pageNumber}}</h2></center>
 <div class="cards">
   {% for platform in platforms %}
     <div class="card">
       <fieldset>
-        <a href="/platform/{{ platform.id }}">
+        <a href="/platform/{{ platform.id }}?page=1">
           <img src="{{platform.logo.url}}">
         </a> <br>
-        <a href="/platform/{{ platform.id }}">{{ platform.name }}</a>
+        <a href="/platform/{{ platform.id }}?page=1">{{ platform.name }}</a>
       </fieldset>
     </div>
   {% endfor %}

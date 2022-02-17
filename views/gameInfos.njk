@@ -1,42 +1,50 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-  <div>
-    <center>
-      <fieldset>
-        <img src="{{ game.cover_url }}">
-      </fieldset>
-    <center>
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <ul>
-              <u><li>Game:</u> {{ game.name }}</li>
-              <u><li>Rating:</u> {{ game.total_rating_count }}</li>
+  <center><h2>{{ game.name }}</h2></center>
+    <div>
+      <center>
+        <fieldset>
+          <img src="{{ game.cover_url }}">
+        </fieldset>
+      <center>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <ul>
+                <u><li>Rating:</u> {{ game.total_rating_count }}</li>
+                <div>
+                  <li><u>Game genres:</u> </li>
+                  {% for index in gameGenres %}
+                    <ul>
+                      <li>{{ index.genre.name }}</li>
+                    </ul>
+                  {% endfor %}
+                  <li><u>Also available on:</u> </li>
+                  {% for index in gamePlatforms %}
+                    {% if gamePlatforms %}
+                      <ul>
+                        <li>{{ index.platform.name }}</li>
+                      </ul>
+                    {% endif %}
+                    {% endfor %}
+                <li><u>Screenshots:</u> </li>
+                </div>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="cards">
+        {% for index in screenshots %}
+          <div class="card">
               <div>
-                <li><u>Game genres:</u> </li>
-                {% for index in gameGenres %}
-                  <ul>
-                    <li>{{ index.genre.name }}</li>
-                  </ul>
-                {% endfor %}
-              <li><u>Screenshots:</u> </li>
+                <img class="img" src="{{ index.url }}">
               </div>
-            </ul>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="cards">
-      {% for index in screenshots %}
-        <div class="card">
-            <div>
-              <img class="img" src="{{ index.url }}">
-            </div>
-        </div>
-      {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
     </div>
-  </div>
 
 {% endblock %}
