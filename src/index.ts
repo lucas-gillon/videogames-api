@@ -20,6 +20,7 @@ app.get("/", (req, response) => {
       throw error;
     }
     const platformsList = JSON.parse(body);
+    // console.log(platformsList);
 
     response.render("listOfPlatforms", { pageNumber, platforms: platformsList.platforms });
   });
@@ -27,6 +28,7 @@ app.get("/", (req, response) => {
 
 app.get("/platformPages", (req, response) => {
   const pages = req.query.page;
+  console.log(pages);
   if (pages === undefined) {
     response.render("/");
   } else {
@@ -48,6 +50,7 @@ app.get("/platform/:id", (req, response) => {
       throw error;
     }
     const platform = JSON.parse(body);
+    // console.log(platform.games);
 
     response.render("gamesNames", { games: platform.games });
   });
