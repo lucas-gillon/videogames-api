@@ -15,18 +15,38 @@ List Of Platforms :
     </div>
   {% endfor %}
 </div>
-
-    <button
-      class="button">
+    {% if pageNumber <= 1 %}
       <a href="/platformPages?page={{pageNumber-1}}">
-      gauche
+      <button
+        class="button"
+        name="page précédente"
+        disabled>
+          page précédente
+      </button>
     </a>
-  </button>
-    <button
-    class="button">
     <a href="/platformPages?page={{pageNumber+1}}">
-      droite
+      <button
+        class="button"
+        name="page suivante">
+          page suivante
+      </button>
     </a>
-    </button>
+    {% else %}
+      <a href="/platformPages?page={{pageNumber-1}}">
+      <button
+        class="button"
+        name="page précédente">
+          page précédente
+      </button>
+    </a>
+    <a href="/platformPages?page={{pageNumber+1}}">
+      <button
+        class="button"
+        name="page suivante">
+          page suivante
+      </button>
+    </a>
+    {% endif %}
+
 
 {% endblock %}

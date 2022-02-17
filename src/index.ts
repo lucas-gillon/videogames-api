@@ -14,33 +14,23 @@ nunjucks.configure("views", {
 app.set("view engine", "njk");
 
 app.get("/", (req, response) => {
-  const pageNumber = String(req.query.page);
-  request(`http://videogame-api.fly.dev/platforms/`, (error, body) => {
-    if (error) {
-      throw error;
-    }
-    const platformsList = JSON.parse(body);
-    // console.log(platformsList);
-
-    response.render("listOfPlatforms", { pageNumber, platforms: platformsList.platforms });
-  });
+  response.redirect("/platformPages?page=1");
 });
 
 app.get("/platformPages", (req, response) => {
   const pageNumber = parseInt(String(req.query.page));
-  console.log(typeof pageNumber);
-  if (pageNumber === undefined) {
-    response.render("/");
-  } else {
-    request(`http://videogame-api.fly.dev/platforms/?page=${pageNumber}`, (error, body) => {
-      if (error) {
-        throw error;
-      }
-      const platformsList = JSON.parse(body);
+  request(`http://videogame-api.fly.dev/platforms/?page=${pageNumber}`, (error, body) => {
+    if (error) {
+      throw error;
+    }
+    // if (pageNumber < 1) {
+    //   response.redirect("/platformPages?page=1");
+    // } else {
+    const platformsList = JSON.parse(body);
 
-      response.render("listOfPlatforms", { pageNumber, platforms: platformsList.platforms });
-    });
-  }
+    response.render("listOfPlatforms", { pageNumber, platforms: platformsList.platforms });
+    // }
+  });
 });
 
 app.get("/platform/:id", (req, response) => {
