@@ -1,37 +1,42 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-
-<div class="wrapper">
-  <fieldset>
-    <img src="{{ game.cover_url }}">
-  </fieldset>
-  <ul>
-    <li>Game: <u>{{ game.name }}</u></li>
-    <li>Rating: {{ game.total_rating_count }}</li>
-    <li>
-    <div>
-      Game genres :
-      {% for index in gameGenres %}
-        <ul>
-          <li>{{ index.genre.name }}</li>
-        </ul>
+  <div>
+    <center>
+      <fieldset>
+        <img src="{{ game.cover_url }}">
+      </fieldset>
+    <center>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <u><li>Game:</u> {{ game.name }}</li>
+              <u><li>Rating:</u> {{ game.total_rating_count }}</li>
+              <div>
+                <li><u>Game genres:</u> </li>
+                {% for index in gameGenres %}
+                  <ul>
+                    <li>{{ index.genre.name }}</li>
+                  </ul>
+                {% endfor %}
+              <li><u>Screenshots:</u> </li>
+              </div>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="cards">
+      {% for index in screenshots %}
+        <div class="card">
+            <div>
+              <img class="img" src="{{ index.url }}">
+            </div>
+        </div>
       {% endfor %}
     </div>
-    </li>
-  </ul>
-  <li>Screenshots:</li>
-  <div class="cards">
-    {% for index in screenshots %}
-      <div class="card">
-        <fieldset>
-          <div>
-            <img class="img" src="{{ index.url }}">
-          </div>
-        </fieldset>
-      </div>
-    {% endfor %}
   </div>
-</div>
 
 {% endblock %}

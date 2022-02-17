@@ -5,9 +5,10 @@ body {
 }
 fieldset {
   position:relative;
+  z-index:9999;
   width: 200px;
   margin: 0%;
-  margin-bottom: 10%;
+  /* margin-bottom: 10%; */
   text-align: center;
   border-radius:8px;
   border-color: grey;
@@ -30,7 +31,6 @@ a:hover {
   transition: transform .1s;
 }
 .img:hover{
-  z-index: 0;
   transform: scale(3);
 }
 
@@ -40,7 +40,6 @@ a:hover {
   padding: 10px;
 }
 .grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 20px;
   font-size: 30px;
