@@ -16,36 +16,39 @@ List Of Platforms :
   {% endfor %}
 </div>
     {% if pageNumber <= 1 %}
-      <a href="/platformPages?page={{pageNumber-1}}">
-      <button
-        class="button"
-        name="page précédente"
-        disabled>
-          page précédente
-      </button>
-    </a>
-    <a href="/platformPages?page={{pageNumber+1}}">
-      <button
-        class="button"
-        name="page suivante">
-          page suivante
-      </button>
-    </a>
+    <div class="cards">
+      <div class="card">
+        <a href="/platformPages?page={{pageNumber-1}}">
+          <button class="button" name="page précédente" disabled>
+            page précédente
+          </button>
+        </a>
+      </div>
+      <div class="card">
+        <a href="/platformPages?page={{pageNumber+1}}">
+          <button class="button" name="page suivante">
+            page suivante
+        </button>
+        </a>
+      </div>
+    </div>
     {% else %}
-      <a href="/platformPages?page={{pageNumber-1}}">
-      <button
-        class="button"
-        name="page précédente">
-          page précédente
-      </button>
-    </a>
-    <a href="/platformPages?page={{pageNumber+1}}">
-      <button
-        class="button"
-        name="page suivante">
-          page suivante
-      </button>
-    </a>
+    <div class="cards">
+      <div class="card">
+        <a href="/platformPages?page={{pageNumber-1}}">
+          <button class="button" name="page précédente">
+            page précédente
+          </button>
+        </a>
+      </div>
+      <div class="card">
+        <a href="/platformPages?page={{pageNumber+1}}">
+          <button class="button" name="page suivante">
+            page suivante
+          </button>
+        </a>
+      </div>
+    </div>
     {% endif %}
 
 
