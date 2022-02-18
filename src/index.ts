@@ -25,23 +25,37 @@ app.get("/platformPages", (req, response) => {
     }
     const platformsList = JSON.parse(body);
 
-    response.render("listOfPlatforms", { pageNumber, platforms: platformsList.platforms });
-
+    response.render("listOfPlatforms", {
+      pageNumber,
+      platforms: platformsList.platforms,
+    });
   });
 });
 
-app.get("/platform/:id", (req, response) => {
-  const platformID = req.params.id;
+app.get("/platform/:slug", (req, response) => {
+  const platformSlug = req.params.slug;
   const pageNumber = parseInt(String(req.query.page));
-  request(`http://videogame-api.fly.dev/games/platforms/${platformID}?page=${pageNumber}`, (error, body) => {
+  request(`http://videogame-api.fly.dev/platforms/slug/${platformSlug}`, (error, body) => {
     if (error) {
       throw error;
     }
     const platform = JSON.parse(body);
+    const platformID = platform.id;
+    request(`http://videogame-api.fly.dev/games/platforms/${platformID}?page=${pageNumber}`, (error, body) => {
+      if (error) {
+        throw error;
+      }
+      const data = JSON.parse(body);
 
-    response.render("gamesNames", { pageNumber, platformID, games: platform.games });
+      response.render("gamesNames", {
+        pageNumber,
+        platformSlug,
+        games: data.games,
+      });
+    });
   });
 });
+// });
 
 app.get("/games/:slug", (req, response) => {
   const routeSlug = req.params.slug;
@@ -51,7 +65,12 @@ app.get("/games/:slug", (req, response) => {
     }
     const game = JSON.parse(body);
 
-    response.render("gameInfos", { game, gamePlatforms: game.games_platforms, gameGenres: game.games_genres, screenshots: game.game_screenshots });
+    response.render("gameInfos", {
+      game,
+      gamePlatforms: game.games_platforms,
+      gameGenres: game.games_genres,
+      screenshots: game.game_screenshots,
+    });
   });
 });
 

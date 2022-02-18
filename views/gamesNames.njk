@@ -25,14 +25,14 @@
 {% if pageNumber <= 1 %}
     <div class="cards">
       <div class="card">
-        <a href="/platform/{{platformID}}?page={{pageNumber-1}}">
+        <a href="/platform/{{platformSlug}}?page={{pageNumber-1}}">
           <button class="button" name="page précédente" disabled>
             page précédente
           </button>
         </a>
       </div>
       <div class="card">
-        <a href="/platform/{{platformID}}?page={{pageNumber+1}}">
+        <a href="/platform/{{platformSlug}}?page={{pageNumber+1}}">
           <button class="button" name="page suivante">
             page suivante
         </button>
@@ -42,14 +42,14 @@
     {% else %}
     <div class="cards">
       <div class="card">
-        <a href="/platform/{{platformID}}?page={{pageNumber-1}}">
+        <a href="/platform/{{platformSlug}}?page={{pageNumber-1}}">
           <button class="button" name="page précédente">
             page précédente
           </button>
         </a>
       </div>
       <div class="card">
-        <a href="/platform/{{platformID}}?page={{pageNumber+1}}">
+        <a href="/platform/{{platformSlug}}?page={{pageNumber+1}}">
           <button class="button" name="page suivante">
             page suivante
           </button>

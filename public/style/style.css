@@ -8,10 +8,9 @@ button:hover {
 }
 fieldset {
   position:relative;
-  z-index:9999;
   width: 200px;
   margin: 0%;
-  text-align: center;
+  /* text-align: center; */
   border-radius:8px;
   border-color: grey;
   border-style: solid;
@@ -49,10 +48,9 @@ a:hover {
 }
 
 html { font-size: 22px; }
-body { padding: 1rem; }
+/* body { padding: 1rem; } */
 
 .card {
-  color: white;
   padding: 1rem;
 }
 .cards {
