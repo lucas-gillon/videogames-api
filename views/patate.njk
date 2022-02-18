@@ -1,12 +1,54 @@
 {% extends "layout.njk" %}
 
 {% block content %}
+  <center><h2>{{ game.name }}</h2></center>
+    <div>
+      <center>
+        <fieldset>
+          <img src="{{ game.cover_url }}">
+        </fieldset>
+      <center>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <ul>
+                <u><li>Rating:</u> {{ game.total_rating_count }}</li>
+                <div>
+                  <li><u>Game genres:</u> </li>
+                  {% for index in gameGenres %}
+                    <ul>
+                      <li>{{ index.genre.name }}</li>
+                    </ul>
+                  {% endfor %}
+                  <li><u>Also available on:</u> </li>
+                  {% for index in gamePlatforms %}
+                    {% if gamePlatforms %}
+                      <ul>
+                        <li>{{ index.platform.name }}</li>
+                      </ul>
+                    {% endif %}
+                    {% endfor %}
+                <li><u>Screenshots:</u> </li>
+                </div>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="cards">
+        {% for index in screenshots %}
+          <div>
+            <img class="img" src="{{ index.url }}">
+          </div>
+        {% endfor %}
+      </div>
+    </div>
 
-<h1>GAME</h1>
-{% for index in games %}
-  {% for i in range (1, 4058)-%}
-    <a href="http://videogame-api.fly.dev/games?page={{i}}">Lien {{index}}</a><br>
-  {%- endfor %}
-{% endfor %}
+<footer class=" text-center text-white">
+  <div style="background-color: papayawhip">
+    &nbsp;
+  </div>
+</footer>
 
 {% endblock %}

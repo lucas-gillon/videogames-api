@@ -32,14 +32,39 @@ app.get("/platformPages", (req, response) => {
   });
 });
 
-// app.get("/randomGame", (req, response) => {
-// const array = [];
-//   request(`http://videogame-api.fly.dev/games?page=1`, (error, body) => {
-//     const data = JSON.parse(body);
-//     console.log(data);
-//     response.render("patate");
-//   });
-// });
+app.get("/randomGame", (req, response) => {
+  const array: string[] = [];
+    request(`http://videogame-api.fly.dev/games`, (error, body) => {
+
+    const data = JSON.parse(body);
+
+    for (let i = 0; i < data.games.length; i++) {
+      array.push(data.games[i].name);
+    }
+
+    function entierAleatoire(min: number, max: number): number {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    const entier = entierAleatoire(0, 19);
+    const routeSlug = data.games[entier].slug;
+
+    // response.render("patate", { games: data.games, array });
+    request(`http://videogame-api.fly.dev/games/slug/${routeSlug}`, (error, body) => {
+      if (error) {
+        throw error;
+      }
+      const game = JSON.parse(body);
+      console.log(game);
+
+      response.render("patate", {
+        game,
+        gamePlatforms: game.games_platforms,
+        gameGenres: game.games_genres,
+        screenshots: game.game_screenshots,
+      });
+    });
+    });
+});
 
 app.get("/platform/:slug", (req, response) => {
   const platformSlug = req.params.slug;
