@@ -32,6 +32,15 @@ app.get("/platformPages", (req, response) => {
   });
 });
 
+// app.get("/randomGame", (req, response) => {
+// const array = [];
+//   request(`http://videogame-api.fly.dev/games?page=1`, (error, body) => {
+//     const data = JSON.parse(body);
+//     console.log(data);
+//     response.render("patate");
+//   });
+// });
+
 app.get("/platform/:slug", (req, response) => {
   const platformSlug = req.params.slug;
   const pageNumber = parseInt(String(req.query.page));
@@ -55,7 +64,6 @@ app.get("/platform/:slug", (req, response) => {
     });
   });
 });
-// });
 
 app.get("/games/:slug", (req, response) => {
   const routeSlug = req.params.slug;

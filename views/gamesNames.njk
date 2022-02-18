@@ -2,60 +2,61 @@
 
 {% block content %}
 
+{% if pageNumber <= 1 %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled"><a class="page-link">page précédente</a></li>
+      <li class="page-item"><a class="page-link" href="/platformPages?page={{pageNumber+1}}">page suivante</a></li>
+    </ul>
+  </nav>
+{% else %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item"><a class="page-link" href="/platform/{{platformSlug}}?page={{pageNumber-1}}">page précédente</a></li>
+      <li class="page-item"><a class="page-link" href="/platform/{{platformSlug}}?page={{pageNumber+1}}">page suivante</a></li>
+    </ul>
+  </nav>
+{% endif %}
+
 <center><h1>Games from the platform : </h1></center>
 <center><h2>Page {{pageNumber}}</h2></center>
+
 <div class="cards">
   {% for index in games %}
-    <div class="card">
-      <fieldset>
-        <div>
+    <div class="card bg-light mb-3">
+      <center>
+        <fieldset>
           <a href="/games/{{index.slug}}">
-            {{ index.name }}
-          </a>
-          <a href="/games/{{index.slug}}">
-            <img src="{{index.cover.url}}">
-          </a>
-         <br>
-        </div>
-      </fieldset>
+            {% if index.cover.url %}
+              <img src="{{index.cover.url}}">
+            {% else %}
+              <img src="img/No_image_available.svg">
+            {% endif %}
+          </a><br>
+          <button type="button" class="btn btn-light">
+            <a href="/games/{{index.slug}}?page=1">{{ index.name }}
+            </a>
+          </button>
+        </fieldset>
+      </center>
     </div>
   {% endfor %}
 </div>
 
 {% if pageNumber <= 1 %}
-    <div class="cards">
-      <div class="card">
-        <a href="/platform/{{platformSlug}}?page={{pageNumber-1}}">
-          <button class="button" name="page précédente" disabled>
-            page précédente
-          </button>
-        </a>
-      </div>
-      <div class="card">
-        <a href="/platform/{{platformSlug}}?page={{pageNumber+1}}">
-          <button class="button" name="page suivante">
-            page suivante
-        </button>
-        </a>
-      </div>
-    </div>
-    {% else %}
-    <div class="cards">
-      <div class="card">
-        <a href="/platform/{{platformSlug}}?page={{pageNumber-1}}">
-          <button class="button" name="page précédente">
-            page précédente
-          </button>
-        </a>
-      </div>
-      <div class="card">
-        <a href="/platform/{{platformSlug}}?page={{pageNumber+1}}">
-          <button class="button" name="page suivante">
-            page suivante
-          </button>
-        </a>
-      </div>
-    </div>
-    {% endif %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled"><a class="page-link">page précédente</a></li>
+      <li class="page-item"><a class="page-link" href="/platformPages?page={{pageNumber+1}}">page suivante</a></li>
+    </ul>
+  </nav>
+{% else %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item"><a class="page-link" href="/platform/{{platformSlug}}?page={{pageNumber-1}}">page précédente</a></li>
+      <li class="page-item"><a class="page-link" href="/platform/{{platformSlug}}?page={{pageNumber+1}}">page suivante</a></li>
+    </ul>
+  </nav>
+{% endif %}
 
 {% endblock %}

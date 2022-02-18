@@ -7,7 +7,7 @@ button:hover {
   cursor:pointer;
 }
 fieldset {
-  position:relative;
+  position: relative;
   width: 200px;
   margin: 0%;
   /* text-align: center; */
@@ -24,7 +24,7 @@ p, a {
   color: #444444;
 }
 a:hover {
-  color: white;
+  /* color: white; */
   cursor: pointer;
 }
 
@@ -55,7 +55,7 @@ html { font-size: 22px; }
 }
 .cards {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
   display: grid;
   grid-gap: 1rem;
 }
@@ -65,7 +65,7 @@ html { font-size: 22px; }
 
 #home {
 	background: rgba(252, 211, 146, 0.89);
-	color: #FFF;
+	/* color: #FFF; */
 	height: 48px;
 	padding-left: 18px;
 	border-radius: 12px;
