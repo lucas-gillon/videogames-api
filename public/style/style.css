@@ -1,7 +1,7 @@
 body {
   background-color: papayawhip;
   font-family: "Open Sans", sans-serif;
-  color: hsl(0, 0%, 27%);
+  color: rgb(69, 69, 69);
 }
 button:hover {
   cursor:pointer;
@@ -10,7 +10,7 @@ fieldset {
   position: relative;
   width: 200px;
   margin: 0%;
-  /* text-align: center; */
+  text-align: center;
   border-radius:8px;
   border-color: grey;
   border-style: solid;
@@ -48,7 +48,6 @@ a:hover {
 }
 
 html { font-size: 22px; }
-/* body { padding: 1rem; } */
 
 .card {
   padding: 1rem;
@@ -64,8 +63,7 @@ html { font-size: 22px; }
 }
 
 #home {
-	background: rgba(252, 211, 146, 0.89);
-	/* color: #FFF; */
+	background: #fcd392e3;
 	height: 48px;
 	padding-left: 18px;
 	border-radius: 12px;

@@ -34,8 +34,7 @@ app.get("/platformPages", (req, response) => {
 
 app.get("/randomGame", (req, response) => {
   const array: string[] = [];
-    request(`http://videogame-api.fly.dev/games`, (error, body) => {
-
+  request(`http://videogame-api.fly.dev/games`, (error, body) => {
     const data = JSON.parse(body);
 
     for (let i = 0; i < data.games.length; i++) {
@@ -48,7 +47,6 @@ app.get("/randomGame", (req, response) => {
     const entier = entierAleatoire(0, 19);
     const routeSlug = data.games[entier].slug;
 
-    // response.render("patate", { games: data.games, array });
     request(`http://videogame-api.fly.dev/games/slug/${routeSlug}`, (error, body) => {
       if (error) {
         throw error;
@@ -63,7 +61,7 @@ app.get("/randomGame", (req, response) => {
         screenshots: game.game_screenshots,
       });
     });
-    });
+  });
 });
 
 app.get("/platform/:slug", (req, response) => {

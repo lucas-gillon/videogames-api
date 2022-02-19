@@ -21,16 +21,16 @@
 <center><h1>Games from the platform : </h1></center>
 <center><h2>Page {{pageNumber}}</h2></center>
 
-<div class="cards">
+<div class="cards .col-lg ">
   {% for index in games %}
-    <div class="card bg-light mb-3">
+    <div class="card bg-light">
       <center>
         <fieldset>
           <a href="/games/{{index.slug}}">
             {% if index.cover.url %}
               <img src="{{index.cover.url}}">
             {% else %}
-              <img src="img/No_image_available.svg">
+              <img src="img/No_image_available.png" height="160px" width="160px">
             {% endif %}
           </a><br>
           <button type="button" class="btn btn-light">
