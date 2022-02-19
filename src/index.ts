@@ -33,13 +33,8 @@ app.get("/platformPages", (req, response) => {
 });
 
 app.get("/randomGame", (req, response) => {
-  const array: string[] = [];
   request(`http://videogame-api.fly.dev/games`, (error, body) => {
     const data = JSON.parse(body);
-
-    for (let i = 0; i < data.games.length; i++) {
-      array.push(data.games[i].name);
-    }
 
     function entierAleatoire(min: number, max: number): number {
       return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -52,9 +47,8 @@ app.get("/randomGame", (req, response) => {
         throw error;
       }
       const game = JSON.parse(body);
-      console.log(game);
 
-      response.render("patate", {
+      response.render("random-game", {
         game,
         gamePlatforms: game.games_platforms,
         gameGenres: game.games_genres,

@@ -1,11 +1,15 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-  <center><h2>{{ game.name }}</h2></center>
+  <center><h2><u>{{ game.name }}</u></h2></center>
     <div>
       <center>
         <fieldset>
-          <img src="{{ game.cover_url }}">
+          {% if game.cover_url %}
+            <img src="{{game.cover_url}}">
+          {% else %}
+            <img src="/img/No_image_available.png" height="160px" width="160px">
+          {% endif %}
         </fieldset>
       <center>
       <table>
