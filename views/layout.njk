@@ -7,30 +7,44 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">Video Games Website</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-          </li>
-        </ul>
-      </div>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/randomGame">Random Game (only 20 first for now)</a>
-          </li>
-        </ul>
+
+    <div class="menu-icon-wrapper ">
+      <div class="menu-icon" onclick="toggleCssMenu(this)">
+        <div class="three-line">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </div>
-  </nav>
+    <div id="cssmenu">
+        <ul class="shadow mb-5 rounded">
+            <li><a href="/">Home</a></li>
+            <li><a href="/randomGame">Random Game (only 20 first for now)</a></li>
+            <li><a href="/allGames?page=1">List of all games</a></li>
+        </ul>
+    </div>
+    <script>
+        function toggleCssMenu(icon) {
+            var cssmenu = document.getElementById('cssmenu');
+            if (icon.className.indexOf('active') == -1) {
+                icon.className = 'menu-icon active';
+          cssmenu.style.display = "block";
+          setTimeout(function(){cssmenu.className = 'active';},0);
+            }
+            else {
+                icon.className = 'menu-icon';
+          cssmenu.className = '';
+          setTimeout(function(){cssmenu.style.display = "none";},411);
+            }
+        }
+    </script>
+
+    <center><h1>Video Games Website</h1></center><br><br>
+
 
     {% block content %}
     {% endblock %}
+
   </body>
 </html>

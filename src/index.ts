@@ -99,6 +99,21 @@ app.get("/games/:slug", (req, response) => {
   });
 });
 
+app.get("/allGames", (req, response) => {
+  const pageNumber = parseInt(String(req.query.page));
+  request(`http://videogame-api.fly.dev/games?page=${pageNumber}`, (error, body) => {
+    if (error) {
+      throw error;
+    }
+    const gamesList = JSON.parse(body);
+
+    response.render("all-games", {
+      pageNumber,
+      games: gamesList.games,
+    });
+  });
+})
+
 app.listen(3000, () => {
   console.log("Server started on http://localhost:3000");
 });

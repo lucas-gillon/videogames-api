@@ -1,0 +1,63 @@
+{% extends "layout.njk" %}
+
+
+{% block content %}
+
+<center><h2>List Of Games :</h2></center>
+<center><h3>Page {{pageNumber}}</h3></center>
+
+{% if pageNumber <= 1 %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled"><a class="page-link">page précédente</a></li>
+      <li class="page-item"><a class="page-link" href="allGames?page={{pageNumber+1}}">page suivante</a></li>
+    </ul>
+  </nav>
+{% else %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item"><a class="page-link" href="/allGames?page={{pageNumber-1}}">page précédente</a></li>
+      <li class="page-item"><a class="page-link" href="/allGames?page={{pageNumber+1}}">page suivante</a></li>
+    </ul>
+  </nav>
+{% endif %}
+
+  <div class="cards">
+    {% for game in games %}
+      <div class="card bg-light mb-3">
+        <center>
+          <fieldset>
+            <a href="/games/{{game.slug}}">
+              {% if game.cover.url %}
+                <img src="{{game.cover.url}}">
+              {% else %}
+                <img src="img/No_image_available.png" height="160px" width="160px">
+              {% endif %}
+            </a> <br>
+            <button type="button" class="btn btn-light">
+              <a href="/games/{{game.slug}}">{{ game.name }}
+              </a>
+            </button>
+          </fieldset>
+        <center>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if pageNumber <= 1 %}
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled"><a class="page-link">page précédente</a></li>
+        <li class="page-item"><a class="page-link" href="/allGames?page={{pageNumber+1}}">page suivante</a></li>
+      </ul>
+    </nav>
+  {% else %}
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link" href="/allGames?page={{pageNumber-1}}">page précédente</a></li>
+        <li class="page-item"><a class="page-link" href="/allGames?page={{pageNumber+1}}">page suivante</a></li>
+      </ul>
+    </nav>
+  {% endif %}
+
+{% endblock %}

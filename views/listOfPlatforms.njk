@@ -3,28 +3,28 @@
 {% block content %}
 
 
-<center><h1>List Of Platforms :</h1></center>
-<center><h2>Page {{pageNumber}}</h2></center>
+<center><h2>List Of Platforms :</h2></center>
+<center><h3>Page {{pageNumber}}</h3></center>
 
 {% if pageNumber <= 1 %}
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-      <li class="page-item disabled"><a class="page-link">page précédente</a></li>
-      <li class="page-item"><a class="page-link" href="/platformPages?page={{pageNumber+1}}">page suivante</a></li>
+      <li class="page-item disabled"><a class="shadow mb-5 rounded page-link">page précédente</a></li>
+      <li class="page-item"><a class="page-link shadow mb-5 rounded" href="/platformPages?page={{pageNumber+1}}">page suivante</a></li>
     </ul>
   </nav>
 {% else %}
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-      <li class="page-item"><a class="page-link" href="/platformPages?page={{pageNumber-1}}">page précédente</a></li>
-      <li class="page-item"><a class="page-link" href="/platformPages?page={{pageNumber+1}}">page suivante</a></li>
+      <li class="page-item"><a class="shadow mb-5 rounded page-link" href="/platformPages?page={{pageNumber-1}}">page précédente</a></li>
+      <li class="page-item"><a class="shadow mb-5 rounded page-link" href="/platformPages?page={{pageNumber+1}}">page suivante</a></li>
     </ul>
   </nav>
 {% endif %}
 
   <div class="cards">
     {% for platform in platforms %}
-      <div class="card bg-light mb-3">
+      <div class="card bg-light mb-3 shadow mb-5 rounded">
         <center>
           <fieldset>
             <a href="/platform/{{ platform.slug }}?page=1">
@@ -47,15 +47,15 @@
   {% if pageNumber <= 1 %}
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
-        <li class="page-item disabled"><a class="page-link">page précédente</a></li>
-        <li class="page-item"><a class="page-link" href="/platformPages?page={{pageNumber+1}}">page suivante</a></li>
+        <li class="page-item disabled"><a class="shadow mb-5 rounded page-link">page précédente</a></li>
+        <li class="page-item"><a class="shadow mb-5 rounded page-link" href="/platformPages?page={{pageNumber+1}}">page suivante</a></li>
       </ul>
     </nav>
   {% else %}
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
-        <li class="page-item"><a class="page-link" href="/platformPages?page={{pageNumber-1}}">page précédente</a></li>
-        <li class="page-item"><a class="page-link" href="/platformPages?page={{pageNumber+1}}">page suivante</a></li>
+        <li class="page-item"><a class="shadow p-3 rounded page-link" href="/platformPages?page={{pageNumber-1}}">page précédente</a></li>
+        <li class="page-item"><a class="shadow p-3 rounded page-link" href="/platformPages?page={{pageNumber+1}}">page suivante</a></li>
       </ul>
     </nav>
   {% endif %}
