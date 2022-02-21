@@ -12,8 +12,12 @@ nunjucks.configure("views", {
 });
 app.set("view engine", "njk");
 
-app.get("/", (req, response) => {
-  response.redirect("/platformPages?page=1");
+app.get("/", (request, response) => {
+  response.redirect("/homepage");
+});
+
+app.get("/homepage", (request, response) => {
+  response.render("home-page");
 });
 
 app.get("/platformPages", (req, response) => {
@@ -57,10 +61,12 @@ app.get("/platform/:slug", (req, response) => {
     .then((response) => response.json())
     .then((platform) => {
       const platformID = platform.id;
+      const platformName = platform.name;
       fetch(`http://videogame-api.fly.dev/games/platforms/${platformID}?page=${pageNumber}`)
         .then((response) => response.json())
         .then((data) => {
           response.render("gamesNames", {
+            platformName,
             pageNumber,
             platformSlug,
             games: data.games,

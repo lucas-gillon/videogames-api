@@ -1,0 +1,41 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<center><h1>Video Games Website</h1></center><br><br>
+
+
+<div class="cards">
+  <div class="card mb-3 shadow mb-5 rounded text-center">
+    <center>
+      <fieldset>
+        <a href="/allGames?page=1">
+          <img src="/img/games.jpeg" width="200px">
+        <a href="/allGames?page=1">List of all games</a>
+      </fieldset>
+    </center>
+  </div>
+  <div class="card mb-3 shadow mb-5 rounded text-center">
+    <center>
+      <fieldset>
+        <a href="/PlatformPages?page=1">
+          <img src="/img/list-platforms.jpeg" width="200px">
+        </a>
+        <a href="/PlatformPages?page=1">List of all platforms</a>
+      </fieldset>
+    </center>
+  </div>
+  <div class="card mb-3 shadow mb-5 rounded text-center">
+    <center>
+      <fieldset>
+        <a href="/randomGame">
+          <img src="/img/random.jpeg" width="200px">
+        </a>
+        <a href="/randomGame">Random game</a>
+      </fieldset>
+    </center>
+  </div>
+</div>
+
+
+{% endblock %}
